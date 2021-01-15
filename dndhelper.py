@@ -40,5 +40,6 @@ def save():
         json.dump(characters, fp)
 
 def load():
+    global characters
     with open("Characters.json", "r") as fp:
         characters = json.load(fp)
