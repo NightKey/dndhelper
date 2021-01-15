@@ -8,6 +8,8 @@ class character:
         self.TB = TB
         self.HP = HP
         self.maxHP = HP
+        self.inventory = {}
+        self.skills = {}
     
     def set_AC(self, ac):
         self.AC = ac
@@ -32,6 +34,29 @@ class character:
         self.HP += 5 + modifyer
         if self.HP > self.maxHP:
             self.HP = self.maxHP
+    
+    def add_item(self, item):
+        self.inventory.update(item)
+
+    def remove_item(self, item_name):
+        del self.inventory[item_name]
+
+    def add_skill(self, skill):
+        self.skills.update(skill)
+
+class item:
+    def __init__(self, name, damage, value):
+        self.stats = {name: {"damage": damage, "value": value}}
+
+    def __repr__(self):
+        return self.stats
+
+class skill:
+    def __init__(self, name, level, damage):
+        self.stats = {name: {"level": level, "damage": damage}}
+    
+    def __repr__(self):
+        return self.stats
     
 characters = {}
 
